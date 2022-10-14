@@ -22,7 +22,6 @@ public class LoginView extends GridPane {
 	
 	public LoginView() {
 		super();
-
 		
 		usernameText = new TextField();
 		ldapCheck = new CheckBox("Usar LDAP");
@@ -30,6 +29,7 @@ public class LoginView extends GridPane {
 		
 		accederButton = new Button("Acceder");
 		accederButton.setMinWidth(USE_PREF_SIZE);
+		accederButton.setDefaultButton(true);
 		cancelarButton = new Button("Cancelar");
 		cancelarButton.setMinWidth(USE_PREF_SIZE);
 		buttonsBox = new HBox(5, accederButton, cancelarButton);
