@@ -24,8 +24,12 @@ public class LoginView extends GridPane {
 		super();
 		
 		usernameText = new TextField();
-		ldapCheck = new CheckBox("Usar LDAP");
+		usernameText.setPromptText("Nombre de usuario");
+
 		passwordText = new PasswordField();
+		passwordText.setPromptText("Contraseña");
+		
+		ldapCheck = new CheckBox("Usar LDAP");
 		
 		accederButton = new Button("Acceder");
 		accederButton.setMinWidth(USE_PREF_SIZE);
