@@ -3,7 +3,7 @@ package dad.login;
 public class Main {
 
 	public static void main(String[] args) throws Exception {
-		Escenario.main(args);
+		LoginApp.main(args);
 //		boolean useLdap = false;
 		
 //		AuthService auth = useLdap ? new LdapAuthService() : new FileAuthService();
@@ -12,7 +12,7 @@ public class Main {
 //		System.out.println("David Carradine : " + auth.login("dcarradine", "kungfu"));
 //		System.out.println("David Carradine : " + auth.login("dcarradine", "karate"));
 //		System.out.println("Michael Knight  : " + auth.login("mknight", "kit"));
-//		
+		
 //		Chuck Norris    : true
 //		Charles Bronson : true
 //		David Carradine : true

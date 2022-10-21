@@ -28,15 +28,16 @@ public class LoginController {
 	}
 	
 	private void onAccederAction(ActionEvent e) {
-		boolean useLdap = model.isIdap();
-		
-		AuthService auth = useLdap ? new LdapAuthService() : new FileAuthService();
+		AuthService auth = model.isIdap() ? new LdapAuthService() : new FileAuthService();
 		try {
+			
 			if(auth.login(model.getUsername(), model.getPassword()))
 				loginCorrecto();
 			else 
-				loginIncorrecto();
-		} catch (Exception e1) { e1.printStackTrace(); }
+				loginIncorrecto("El usuario y/o contraseña no son válidos");
+		} catch (Exception e1) {
+			loginIncorrecto("Se ha producido un error al intentar iniciar sesión");
+		}
 	}
 	
 	private void loginCorrecto() {
@@ -49,12 +50,12 @@ public class LoginController {
 		close();
 	}
 	
-	private void loginIncorrecto() {
+	private void loginIncorrecto(String contentText) {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.initOwner(primaryStage); // para que la ventana salga centralizada en torno al dueño
 		alert.setTitle("Iniciar Sesión");
 		alert.setHeaderText("Acceso denegado");
-		alert.setContentText("El usuario y/o contraseña no son válidos");
+		alert.setContentText(contentText);
 		alert.showAndWait();
 		limpiar();
 	}
@@ -64,7 +65,6 @@ public class LoginController {
 	}
 	
 	private void limpiar() {
-		view.getUsernameText().setText("");
 		view.getPasswordText().setText("");
 		view.getLdapCheck().setSelected(false);
 	}
